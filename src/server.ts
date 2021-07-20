@@ -1,7 +1,12 @@
 import express from "express";
 import cors from "cors";
 import { getDigipet } from "./digipet/model";
-import { hatchDigipet, trainDigipet, walkDigipet } from "./digipet/controller";
+import {
+  feedDigipet,
+  hatchDigipet,
+  trainDigipet,
+  walkDigipet,
+} from "./digipet/controller";
 
 const app = express();
 
@@ -52,6 +57,16 @@ app.get("/digipet/hatch", (req, res) => {
       message:
         "You have successfully hatched an adorable new digipet. Just the cutest.",
       digipet,
+    });
+  }
+});
+
+app.get("/digipet/feed", (req, res) => {
+  if (getDigipet()) {
+    feedDigipet();
+    res.json({
+      message: "feeding time, lets feed your digit pet! yum yum",
+      digipet: getDigipet(),
     });
   }
 });
