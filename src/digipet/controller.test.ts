@@ -7,7 +7,7 @@ import {
 } from "./controller";
 import { getDigipet, INITIAL_DIGIPET, setDigipet } from "./model";
 
-describe("ignoreDigiget", () => {
+describe("ignoreDigipet", () => {
   it("decerases all stats by 10 if all stats are above 10. if stats below 10, decrease by 10 to floor of 0", () => {
     setDigipet(INITIAL_DIGIPET);
     expect(getDigipet()).toStrictEqual(INITIAL_DIGIPET);
