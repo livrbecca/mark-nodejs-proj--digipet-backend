@@ -4,6 +4,7 @@ import { getDigipet } from "./digipet/model";
 import {
   feedDigipet,
   hatchDigipet,
+  ignoreDigipet,
   trainDigipet,
   walkDigipet,
 } from "./digipet/controller";
@@ -61,12 +62,31 @@ app.get("/digipet/hatch", (req, res) => {
   }
 });
 
+app.get("/digipet/ignore", (req, res) => {
+  if (getDigipet()) {
+    ignoreDigipet();
+    res.json({
+      message: "ignore your digipet? rude but fine",
+      digipet: getDigipet(),
+    });
+  } else {
+    res.json({
+      message:
+        "you don't have a digipet to ignore, try hatch one /digipet/hatch",
+    });
+  }
+});
+
 app.get("/digipet/feed", (req, res) => {
   if (getDigipet()) {
     feedDigipet();
     res.json({
       message: "feeding time, lets feed your digit pet! yum yum",
       digipet: getDigipet(),
+    });
+  } else {
+    res.json({
+      message: "you don't have a digipet to feed, try hatch one /digipet/hatch",
     });
   }
 });
@@ -80,7 +100,8 @@ app.get("/digipet/train", (req, res) => {
     });
   } else {
     res.json({
-      message: "No digipet to train, hatch one with /digiget/hatch",
+      message:
+        "you don't have a digipet to train, try hatching one /digipet/hatch",
     });
   }
 });

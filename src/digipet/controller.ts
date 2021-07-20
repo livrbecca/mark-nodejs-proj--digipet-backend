@@ -28,6 +28,12 @@ export function hatchDigipet(): Digipet {
   }
 }
 
+export function ignoreDigipet(): void {
+  updateDigipetBounded("happiness", -10);
+  updateDigipetBounded("discipline", -10);
+  updateDigipetBounded("nutrition", -10);
+}
+
 export function trainDigipet(): void {
   updateDigipetBounded("happiness", -5);
   updateDigipetBounded("discipline", 10);
