@@ -20,6 +20,8 @@ app.get("/", (req, res) => {
   res.json({
     message:
       "Welcome to Digipet, the totally original digital pet game! Keep your pet happy, healthy and well-disciplined to win the game. If in doubt, check out the /instructions endpoint!",
+    description:
+      "Welcome to Digipet, the totally original digital pet game! Keep your pet happy, healthy and well-disciplined to win the game. If in doubt, press the instructions button",
   });
 });
 
@@ -27,6 +29,8 @@ app.get("/instructions", (req, res) => {
   res.json({
     message:
       "You can check out your digipet's stats with /digipet, and add various actions after that with the /digipet/[action], for actions like walk, train, feed, ignore and hatch. For example, try /digipet/walk to walk a digipet!",
+    description:
+      "You can check out your digipet's stats with the digipet button, and add various actions after that with the buttons below, with actions like walk, train, feed, ignore and hatch. For example, try pressing walk to walk a digipet!",
   });
 });
 
@@ -35,11 +39,14 @@ app.get("/digipet", (req, res) => {
   if (digipet) {
     res.json({
       message: "Your digipet is waiting for you!",
+      //description: "Your digipet is waiting for you!",
       digipet, // equivalent to digipet: digipet
     });
   } else {
     res.json({
       message: "You don't have a digipet yet! Try hatching one with /hatch",
+      description:
+        "You don't have a digipet yet! Try hatching one with the hatch button",
       digipet: undefined,
     });
   }
@@ -73,6 +80,8 @@ app.get("/digipet/ignore", (req, res) => {
     res.json({
       message:
         "you don't have a digipet to ignore, try hatch one /digipet/hatch",
+      description:
+        "you don't have a digipet to ignore, try hatch the hatch button!",
     });
   }
 });
