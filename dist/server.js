@@ -11,6 +11,10 @@ const app = express_1.default();
 /**
  * Simplest way to connect a front-end. Unimportant detail right now, although you can read more: https://flaviocopes.com/express-cors/
  */
+
+ // needed npm run start:dev
+
+ 
 app.use(cors_1.default());
 app.get("/", (req, res) => {
     res.json({
